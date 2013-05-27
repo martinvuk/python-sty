@@ -1,3 +1,7 @@
+Embeding python output in LaTeX
+===============================
+This project provides style python.sty and octave.sty that enable to run python/octave code from within LaTeX and mebed its output in the document.
+
 **Note**: By default LaTeX and its variants disallowing calling of arbitrary shell commands. python.sty requires unrestricted
 to the shell in order to execute embedded Python scripts. When running python.sty you must execute ``latex`` or ``pdftex`` with
 either the ``-enable-write18`` or ``-shell-escape`` command line argument to enabled access to the Python executable.
