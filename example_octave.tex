@@ -1,0 +1,41 @@
+\documentclass{article}
+
+\usepackage{octave}
+\usepackage{amsmath}
+
+\title{Example Use of octave.sty}
+\author{Martin Vuk \emph{martin.vuk@fri.uni-lj.si}}
+\begin{document}
+\maketitle
+
+$N \times N$ element identity matrices for $N \in \{1,2,\ldots,5\}$:
+
+\begin{octave}
+function I=identity(n)
+% Generates and returns the LaTeX code for
+% a n x n identity matrix.
+id = eye(n);
+I = ('\\begin{bmatrix}\n');
+for i=1:n
+  I = [I sprintf('%d&',id(i,1:n-1)) sprintf('%d\\\\cr\n',id(i,n))];
+end
+I = [I '\\end{bmatrix}\n'];
+endfunction
+
+% Displays identity matrices for
+% n \in {1, 2, ..., 5}.
+printf('\\begin{equation*}\n\\begin{array}{ccccc}\n')
+for i=1:4
+  printf([identity(i),'&'])
+end
+printf([identity(5) '\n\\end{array}.\n\\end{equation*}'])
+\end{octave}
+
+\begin{octave}
+% Create a deliberate exception.
+printf( 'This text will be displayed.')
+[1 2]^[1;2]
+printf( 'This text will not be displayed.')
+\end{octave}
+
+\end{document}
